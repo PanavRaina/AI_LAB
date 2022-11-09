@@ -5,7 +5,7 @@ using namespace std;
 
 int m;
 int n;
-int count_ans = 0;
+int ans_count = 0;
 
 
 void display(vector<vector<int>> board){
@@ -38,7 +38,6 @@ int count_empty(vector<vector<int>> board){
             }
         }
     }
-    //cout<<"empty_space : "<<empty_space<<endl;
     return empty_space;
 }
 
@@ -74,15 +73,11 @@ vector<vector<int>> place_board(vector<vector<int>> board, int ci, int cj){
 void knight(vector<vector<int>> board, int k, int st_i, int st_j){
     if(k==0){
         display(board);
-        count_ans += 1;
+        ans_count += 1;
         cout<<endl;
         return;
     }
     else{
-       // if(count_empty(board) < 2*k){
-         //       cout<<"true"<<endl;
-           // return ;
-        //}
         for(int i=st_i;i<=m-1;i++){
             for(int j=st_j; j<=n-1;j++){
                 if(can_place(board,i,j)){
@@ -105,7 +100,7 @@ int main(){
     auto start = high_resolution_clock::now();
     knight(board,k,0,0);
     auto stop = high_resolution_clock::now();
-    cout<<"The total no. of solutions are : "<<count_ans<<endl;
+    cout<<"The total no. of solutions are : "<<ans_count<<endl;
     auto duration= duration_cast<microseconds>(stop-start);
     cout<<"Time taken is : "<< duration.count()<<" microseconds"<<endl;
     return 0;
