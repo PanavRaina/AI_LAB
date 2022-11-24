@@ -3,34 +3,36 @@ using namespace std;
 
 float mean(vector<float> arr){
     float sum = 0;
-    int size_arr = arr.size();
-    float mean_cal = -1;
-    for(int i=0;i<size_arr;i++){
+    int n = arr.size();
+    float mean_of_array = -1;
+    for(int i=0;i<n;i++){
         sum += arr[i];
     }
-    mean_cal = sum/size_arr;
-    return mean_cal;
+    mean_of_array = sum/n;
+    return mean_of_array;
 }
 
 int main(){
-    srand(time(0));
+    int s1,s2,s3,s4;
+    cout<<"Enter the seed values : ";
+    cin>>s1>>s2>>s3>>s4;
+    int start,end;
+    cout<<"Enter the range of numbers in which random numbers are to be generated : ";
+    cin>>start>>end;
     vector<float> arr;
+    cout<<"Random numbers generated : ";
     for(int i=0;i<100;i++){
-        int m = rand() % 100;
-        arr.push_back(m);
+        int x = (rand() % (end-start+1))+start;
+        cout<<x<<' ';
+        arr.push_back(x);
     }
-    vector<float> g1,g2,g3,g4;
+    cout<<endl;
+    vector<float> v1,v2,v3,v4;
 
-    /*for(int i=0;i<100;i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;*/
-
-
-    g1.push_back(4);
-    g2.push_back(3);
-    g3.push_back(2);
-    g4.push_back(1);
+    v1.push_back(s1);
+    v2.push_back(s2);
+    v3.push_back(s3);
+    v4.push_back(s4);
 
     for(int i=0;i<50;i++){
         vector<float> a1,a2,a3,a4;
@@ -39,30 +41,30 @@ int main(){
         a3.clear();
         a4.clear();
 
-        a1.push_back(g1[i]);
-        a2.push_back(g2[i]);
-        a3.push_back(g3[i]);
-        a4.push_back(g4[i]);
+        a1.push_back(v1[i]);
+        a2.push_back(v2[i]);
+        a3.push_back(v3[i]);
+        a4.push_back(v4[i]);
 
-        int min_so_far = INT_MAX;
+        int minimum = INT_MAX;
         int index = -1;
 
         for(int j=0;j<100;j++){
-            if(abs(arr[j] - a1[0]) < min_so_far){
+            if(abs(arr[j] - a1[0]) < minimum){
                 index = 1;
-                min_so_far = abs(arr[j] - a1[0]);
+                minimum = abs(arr[j] - a1[0]);
             }
-            if(abs(arr[j] - a2[0]) < min_so_far){
+            if(abs(arr[j] - a2[0]) < minimum){
                 index = 2;
-                min_so_far = abs(arr[j] - a2[0]);
+                minimum = abs(arr[j] - a2[0]);
             }
-            if(abs(arr[j] - a3[0]) < min_so_far){
+            if(abs(arr[j] - a3[0]) < minimum){
                 index = 3;
-                min_so_far = abs(arr[j] - a3[0]);
+                minimum = abs(arr[j] - a3[0]);
             }
-            if(abs(arr[j] - a4[0]) < min_so_far){
+            if(abs(arr[j] - a4[0]) < minimum){
                 index = 4;
-                min_so_far = abs(arr[j] - a4[0]);
+                minimum = abs(arr[j] - a4[0]);
             }
             if(index == 1){
                 a1.push_back(arr[j]);
@@ -81,32 +83,50 @@ int main(){
                 a4[0] = mean(a4);
             }
         }
-        g1.push_back(a1[0]);
-        g2.push_back(a2[0]);
-        g3.push_back(a3[0]);
-        g4.push_back(a4[0]);
+        v1.push_back(a1[0]);
+        v2.push_back(a2[0]);
+        v3.push_back(a3[0]);
+        v4.push_back(a4[0]);
     }
-    cout<<"G1 :"<<endl;
-    for(int i=0;i<g1.size();i++){
-        cout<<g1[i]<<" ";
-    }
-    cout<<endl;
-
-    cout<<"G2 :"<<endl;
-    for(int i=0;i<g2.size();i++){
-        cout<<g2[i]<<" ";
-    }
-    cout<<endl;
-
-    cout<<"G3 :"<<endl;
-    for(int i=0;i<g3.size();i++){
-        cout<<g3[i]<<" ";
+    int count=0;
+    cout<<"V1 : ";
+    for(int i=0;i<v1.size();i++){
+        count++;
+        cout<<v1[i]<<" ";
+        if(count==20){
+            cout<<endl;
+            count=0;
+        }
     }
     cout<<endl;
-
-    cout<<"G4 :"<<endl;
-    for(int i=0;i<g4.size();i++){
-        cout<<g4[i]<<" ";
+    count=0;
+    cout<<"V2 : ";
+    for(int i=0;i<v2.size();i++){
+        cout<<v2[i]<<" ";
+        if(count==20){
+            cout<<endl;
+            count=0;
+        }
+    }
+    cout<<endl;
+    count=0;
+    cout<<"V3 : ";
+    for(int i=0;i<v3.size();i++){
+        cout<<v3[i]<<" ";
+        if(count==20){
+            cout<<endl;
+            count=0;
+        }
+    }
+    cout<<endl;
+    count=0;
+    cout<<"V4 : ";
+    for(int i=0;i<v4.size();i++){
+        cout<<v4[i]<<" ";
+        if(count==20){
+            cout<<endl;
+            count=0;
+        }
     }
     cout<<endl;
     return 0;
