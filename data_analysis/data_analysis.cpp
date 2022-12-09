@@ -143,5 +143,19 @@ int main()
     {
         cout<<movavg[i]<<' ';
     }
+    //adam optimization
+    float alpha = 1;
+    float epsilon = 1;
+    float val;
+    vector<float>adamOpt;
+    cout<<endl;
+    cout<<"adam optimization of the above data is as follows: "<<endl;
+    for(int i =1; i<laplacian.size(); i++)
+    {
+        val = (data[i] - alpha * gradient[i-1])/(sqrt((laplacian[i]*laplacian[i]) + epsilon));
+        adamOpt.push_back(val);
+        cout<<val<<" ";
+    }
+    cout<<endl;
     return 0;
 }
